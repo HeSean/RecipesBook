@@ -78,6 +78,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   getControls() {
+    console.log('getcontrols ACTIVATED');
     return (this.recipeForm.get('ingredients') as FormArray).controls;
   }
 
@@ -96,6 +97,7 @@ export class RecipeEditComponent implements OnInit {
 
   onDeleteIngredient(index: number) {
     (this.recipeForm.get('ingredients') as FormArray).removeAt(index);
+    // (this.recipeForm.get('ingredients') as FormArray).clear();
   }
 
 

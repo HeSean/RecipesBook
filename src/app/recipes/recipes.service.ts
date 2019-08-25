@@ -10,33 +10,42 @@ import { Subject } from 'rxjs';
 export class RecipesService {
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      'Burger',
-      'fucking delicious',
-      'https://tinyurl.com/ydhk33or',
-      [new Ingredient('Burger', 1),
-      new Ingredient('Buns', 2),
-      new Ingredient('French fries', 123091823)]
-    ),
-    new Recipe(
-      'Burger',
-      'fucking delicious',
-      'https://tinyurl.com/ydhk33or',
-      [new Ingredient('Burger', 1),
-      new Ingredient('Bun', 2),
-      new Ingredient('French fries', 123091823)]
-    ), new Recipe(
-      'Burger',
-      'fucking delicious',
-      'https://tinyurl.com/ydhk33or',
-      [new Ingredient('Burger', 1),
-      new Ingredient('Bun', 2),
-      new Ingredient('French fries', 123091823)]
-    ), ];
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'Burger',
+  //     'fucking delicious',
+  //     'https://tinyurl.com/ydhk33or',
+  //     [new Ingredient('Burger', 1),
+  //     new Ingredient('Buns', 2),
+  //     new Ingredient('French fries', 123091823)]
+  //   ),
+  //   new Recipe(
+  //     'Burger',
+  //     'fucking delicious',
+  //     'https://tinyurl.com/ydhk33or',
+  //     [new Ingredient('Burger', 1),
+  //     new Ingredient('Bun', 2),
+  //     new Ingredient('French fries', 123091823)]
+  //   ), new Recipe(
+  //     'Burger',
+  //     'fucking delicious',
+  //     'https://tinyurl.com/ydhk33or',
+  //     [new Ingredient('Burger', 1),
+  //     new Ingredient('Bun', 2),
+  //     new Ingredient('French fries', 123091823)]
+  //   ),];
+
+  private recipes: Recipe[] = [];
 
 
   constructor(private shoppingListService: ShoppingListService) { }
+
+
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     console.log('returning array of recipes');
